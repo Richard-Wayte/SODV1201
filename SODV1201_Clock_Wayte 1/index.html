@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- changed the name in the browser -->
+    <title>Browser Clock</title>
+    <script src="index.js"></script>
+</head>
+<!-- set up to start imediatly -->
+<body onload="initialize()">
+    <h1>Richard's Browser Clock</h1>
+    <h2>Current time</h2>
+    <!-- This is the display for the clock itself -->
+    <div id="time">Placeholder</div>
+
+    <!-- the button to toggle 12 and 24 hour clock -->
+    <!-- used onclick for my buttons because event listeners were immediatly not working the way I would have liked them to -->
+    <div>
+        <input type="button" id="clockFace" onclick=toggle() value="Set to 12hr"/>
+    </div>
+
+    <h2>Set Custom Time</h2>
+    <p>Hour (24 format), Minute</p>
+    <!-- all of the elements to set one's own time -->
+    <div>
+        <!-- in a perfect world I would have used dateTime-local for this but I for whatever reason I couldn't pull inputs from it -->
+        <!-- so instead there are two number inputs. one for the hour and one for the minute -->
+        <input type="number" id=cusHour value=""/>
+        <input type="number" id=cusMinute value=""/>
+        <!-- buttons to set and remove custom times -->
+        <input type="button" id="cusTimeSet" onclick=setCustomTime() value="Set Time"/>
+        <input type="button" id="cusTimeClear" onclick=clearCustomTime() value="Reset Time"/>
+    </div>
+    
+    <!-- everything for a functional stopwatch (my favourite part) -->
+    <h2>Stopwatch</h2>
+    <p>(Note: If you press "start" more than once, "stop" will not function. Reloading will fix it.)</p>
+    <!-- stopwatch display broken up into different elements because of how I tracked the time -->
+    <div id="watch"><span id=wh>00</span>:<span id=wm>00</span>:<span id=ws>00</span>:<span id=wcs>00</span></div>
+    <!-- All the watch buttons of course -->
+    <div class="buttons">
+        <input type="button" id="start" onclick=watchOn() value="Start"/>
+        <input type="button" id="stop" onclick=watchOff() value="Stop"/>
+        <input type="button" id="watchClear" onclick=resetWatch() value="Clear"/>
+    </div>
+
+    <!-- Everything from the time set applies here too -->
+    <h2>Set an Alarm</h2>
+    <p>Hour (24 format), Minute</p>
+    <div>
+        <input type="number" id=alarmHour value=""/>
+        <input type="number" id=alarmMinute value=""/>
+        <input type="button" id="alarmSet" onclick=setAlarm() value="Set Alarm"/>
+    </div>
+</body>
+</html>
